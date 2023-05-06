@@ -1,0 +1,209 @@
+{
+  "tweets": [
+    {
+      "tweetId": "id-1683301262844-878446977",
+      "tweetContent": "aaa",
+      "userId": 1,
+      "username": "fares123",
+      "comments": [
+        {
+          "id": 1683334875655,
+          "commentContent": "com 1 COMPTE MARIE",
+          "userId": 2,
+          "username": "marie123",
+          "likes": [
+            {
+              "username": "marie123",
+              "likeFrom": 2
+            }
+          ],
+          "retweet": []
+        }
+      ],
+      "likes": [],
+      "retweet": [],
+      "id": 1
+    },
+    {
+      "tweetId": "id-1683301263615-791907737",
+      "tweetContent": "bbb",
+      "userId": 1,
+      "username": "fares123",
+      "comments": [
+        {
+          "id": 1683334683195,
+          "commentContent": "com 1 B",
+          "userId": 1,
+          "username": "fares123",
+          "likes": [
+            {
+              "username": "fares123",
+              "likeFrom": 1
+            }
+          ],
+          "retweet": [
+            {
+              "username": "fares123",
+              "likeFrom": 1
+            }
+          ]
+        },
+        {
+          "id": 1683334866682,
+          "commentContent": "com 2 B compte marie",
+          "userId": 2,
+          "username": "marie123",
+          "likes": [],
+          "retweet": [
+            {
+              "username": "marie123",
+              "likeFrom": 2
+            }
+          ]
+        }
+      ],
+      "likes": [
+        {
+          "username": "fares123",
+          "likeFrom": 1
+        }
+      ],
+      "retweet": [
+        {
+          "username": "fares123",
+          "retweetFrom": 1
+        }
+      ],
+      "id": 2
+    },
+    {
+      "tweetId": "id-1683301264961-321951038",
+      "tweetContent": "ccc",
+      "userId": 1,
+      "username": "fares123",
+      "comments": [
+        {
+          "id": 1683334673356,
+          "commentContent": "com 1 C",
+          "userId": 1,
+          "username": "fares123",
+          "likes": [],
+          "retweet": []
+        }
+      ],
+      "likes": [
+        {
+          "username": "fares123",
+          "likeFrom": 1
+        }
+      ],
+      "retweet": [],
+      "id": 3
+    },
+    {
+      "tweetId": "id-1683326818338-248966988",
+      "tweetContent": "yo",
+      "userId": 1,
+      "username": "fares123",
+      "comments": [
+        {
+          "id": 1683334667700,
+          "commentContent": "com 1",
+          "userId": 1,
+          "username": "fares123",
+          "likes": [
+            {
+              "username": "marie123",
+              "likeFrom": 2
+            }
+          ],
+          "retweet": [
+            {
+              "username": "marie123",
+              "likeFrom": 2
+            }
+          ]
+        },
+        {
+          "id": 1683334843237,
+          "commentContent": "com 2",
+          "userId": 2,
+          "username": "marie123",
+          "likes": [
+            {
+              "username": "marie123",
+              "likeFrom": 2
+            }
+          ],
+          "retweet": [
+            {
+              "username": "marie123",
+              "likeFrom": 2
+            }
+          ]
+        }
+      ],
+      "likes": [
+        {
+          "username": "fares123",
+          "likeFrom": 1
+        }
+      ],
+      "retweet": [],
+      "id": 4
+    },
+    {
+      "tweetId": "id-1683327445961-146871408",
+      "tweetContent": "aze",
+      "userId": 1,
+      "username": "fares123",
+      "comments": [
+        {
+          "id": 1683334288182,
+          "commentContent": "test",
+          "userId": 1,
+          "username": "fares123",
+          "likes": [
+            {
+              "username": "marie123",
+              "likeFrom": 2
+            }
+          ],
+          "retweet": []
+        },
+        {
+          "id": 1683334853412,
+          "commentContent": "test 2 ",
+          "userId": 2,
+          "username": "marie123",
+          "likes": [],
+          "retweet": []
+        }
+      ],
+      "likes": [
+        {
+          "username": "fares123",
+          "likeFrom": 1
+        }
+      ],
+      "retweet": [],
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "email": "fares@fares.fr",
+      "username": "fares123",
+      "password": "fares123",
+      "profileImage": "/default-avatar.png",
+      "id": 1
+    },
+    {
+      "email": "marie@marie.fr",
+      "username": "marie123",
+      "password": "marie123",
+      "profileImage": "/default-avatar.png",
+      "id": 2
+    }
+  ]
+}
