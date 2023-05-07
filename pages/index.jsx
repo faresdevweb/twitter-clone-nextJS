@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import { useConnection } from '@/hooks/useConnection'
 import { useRouter } from 'next/router'
 import { UserState } from '@/context/User context/UserContext'
 
@@ -19,68 +20,8 @@ const Index = () => {
 
     const { state: {users,currentUser}, dispatchUsers } = UserState();
 
-    const handleRegister = async (event) => {
-        event.preventDefault();
-        if (
-          register.email.trim() !== "" &&
-          register.username.trim() !== "" &&
-          register.password.trim() !== ""
-        ) {
-          const newUser = {
-            email: register.email,
-            username: register.username,
-            password: register.password,
-            profileImage: "/default-avatar.png"
-          };
-      
-          const response = await fetch("http://localhost:5000/users", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newUser),
-          });
-          const createdUser = await response.json();
-      
-          dispatchUsers({ type: "REGISTER", payload: createdUser });
-          dispatchUsers({ type: "SIGN_IN_SUCCESS", payload: createdUser });
-          router.push("/home");
-        }
-      };
-      
-
-    const handleLogin = async (event) => {
-        event.preventDefault();
-        if (
-          signInForm.email.trim() !== "" &&
-          signInForm.password.trim() !== ""
-        ) {
-          const signInUser = async (email, password) => {
-            const response = await fetch("http://localhost:5000/users");
-            const users = await response.json();
-            const user = users.find(
-              (user) => user.email === email && user.password === password
-            );
-            return user;
-          };
-      
-          const signedInUser = await signInUser(signInForm.email, signInForm.password);
-      
-          if (signedInUser) {
-            dispatchUsers({
-              type: "SIGN_IN_SUCCESS",
-              payload: {
-                id: signedInUser.id,
-                username: signedInUser.username,
-                email: signedInUser.email
-              },
-            });
-            router.push("/home");
-          } else {
-            console.log("User not found");
-          }
-        }
-      };
+    const { handleLogin, handleRegister } = useConnection(signInForm, register,router);
+  
 
   return (
     <div className='border border-purple-500 flex flex-col gap-4 max-w-[600px] mx-auto'>

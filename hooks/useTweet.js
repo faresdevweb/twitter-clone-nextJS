@@ -1,6 +1,12 @@
 import { TweetState } from "@/context/Tweet context/TweetContext";
 import { useState } from "react";
 
+/**
+ * 
+ * @param {Object} currentUser 
+ * @returns {handlePostTweet && handleLike && handleRetweet}
+ */
+
 export const useTweet = (currentUser) => {
 
   const { state: { tweets }, dispatchTweet } = TweetState();

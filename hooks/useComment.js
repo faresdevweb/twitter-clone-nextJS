@@ -1,5 +1,5 @@
 import { TweetState } from "@/context/Tweet context/TweetContext";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export const useComment = (currentUser,comments,setComments,tweet) => {
 

@@ -11,7 +11,6 @@ const Home = ( { tweetsData } ) => {
     const router = useRouter();
     const { state: { currentUser }, dispatchUsers } = UserState();
     const { state: { tweets }, dispatchTweet } = TweetState();
-    
     const { tweetContent, setTweetContent, handlePostTweet, handleLike, handleRetweet }  = useTweet(currentUser);
 
     useEffect(() => {
@@ -65,8 +64,6 @@ export default Home
 export async function getServerSideProps() {
     const response = await fetch('http://localhost:3000/api/getTweets');
     const data = await response.json();
-
-    console.log("data in getserversideprops :" , data);
 
     return {
         props: {

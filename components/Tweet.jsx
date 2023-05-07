@@ -16,6 +16,10 @@ const Tweet = (props) => {
         router.push(`/comments/${id}`)
     }
 
+    const handleUsernameClick = (username) => {
+        router.push(`/profile/${username}`)
+    }
+
     return (
         <div className='border border-black rounded-lg w-[80%] mx-auto mb-5 sm:w-[100%]'>
             <div className="container-name  flex justify-start p-3">
@@ -27,7 +31,10 @@ const Tweet = (props) => {
                         className="rounded-full mr-2"
                         alt='Image tweet'
                     />
-                    <p> {username} </p>
+                    <p 
+                        className='hover:underline hover:cursor-pointer'
+                        onClick={() => handleUsernameClick(username)}
+                    > {username} </p>
                 </div>
             </div>
             <div className='p-3 flex justify-end'>

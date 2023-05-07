@@ -16,6 +16,11 @@ const Comment = ({ tweet }) => {
 
   const { tweetContent, setTweetContent, handlePostComments,handleLikeComment, handleRetweetComment } = useComment(currentUser,comments,setComments,tweet);
 
+  useEffect(() => {
+    if(!currentUser){
+      router.push('/');
+    }
+  })
   return (
     <div className='border-2 p-3 xs:h-[80%] xs:relative xs:overflow-auto xs:w-full sm:h-full xl:w-[40%] 2xl:w-[60%]'> 
        <Tweet
