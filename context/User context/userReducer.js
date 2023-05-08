@@ -10,6 +10,11 @@ export const userReducer = (state, action) => {
         ...state,
         users: [...state.users, action.payload],
       };
+    case "UPDATE_CURRENT_USER":
+      return {
+        ...state,
+        currentUser: action.payload,
+      };
     case "SIGN_IN_SUCCESS":
       return {
         ...state,

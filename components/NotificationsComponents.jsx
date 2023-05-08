@@ -1,19 +1,13 @@
-import React from 'react'
-import Image from 'next/image'
-import logo from "/public/logo.png"
+import React from 'react';
+import Image from 'next/image';
+import logo from "/public/logo.png";
+import { TiDelete } from "react-icons/ti";
 
-const NotificationsComponents = () => {
+const NotificationsComponents = ({ content }) => {
     return (
-        <div>
-            <div className="flex items-start border-b">
-                <h2 className="text-2xl font-bold">Notifications</h2>
-            </div>
-            <div className="h-screen p-5 ">
-                <div className="flex items-center border rounded-full p-3">
-                    <Image src={logo} width={35} className='mr-2'/>
-                    <p className='text-lg'>Someone has liked your tweet!</p>
-                </div>
-            </div>
+        <div className="flex items-center border-2 rounded-full p-3 mb-5 relative">
+            <Image src={logo} width={35} className='mr-2' alt='logo twitter'/>
+            <p className='text-lg p-2'> {content} </p>
         </div>
       )
 }

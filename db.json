@@ -1,25 +1,72 @@
 {
   "tweets": [
     {
-      "tweetId": "id-1683468564856-623706472",
-      "tweetContent": "Tweet 1",
+      "tweetId": "id-1683497407220-66521895",
+      "tweetContent": "test 1  ",
       "userId": 1,
       "username": "fares123",
-      "comments": [
-        {
-          "id": 1683468589988,
-          "commentContent": "com 1 marie123",
-          "userId": 2,
-          "username": "marie123",
-          "likes": [],
-          "retweet": []
-        }
-      ],
+      "comments": [],
       "likes": [
         {
           "username": "marie123",
           "likeFrom": 2
-        },
+        }
+      ],
+      "retweet": [
+        {
+          "username": "marie123",
+          "retweetFrom": 2
+        }
+      ],
+      "id": 1
+    },
+    {
+      "tweetId": "id-1683497410652-527683838",
+      "tweetContent": "tweet 2",
+      "userId": 1,
+      "username": "fares123",
+      "comments": [],
+      "likes": [
+        {
+          "username": "marie123",
+          "likeFrom": 2
+        }
+      ],
+      "retweet": [
+        {
+          "username": "marie123",
+          "retweetFrom": 2
+        }
+      ],
+      "id": 2
+    },
+    {
+      "tweetId": "id-1683497412663-302157206",
+      "tweetContent": "test 3",
+      "userId": 1,
+      "username": "fares123",
+      "comments": [],
+      "likes": [
+        {
+          "username": "marie123",
+          "likeFrom": 2
+        }
+      ],
+      "retweet": [
+        {
+          "username": "marie123",
+          "retweetFrom": 2
+        }
+      ],
+      "id": 3
+    },
+    {
+      "tweetId": "id-1683504126880-255951335",
+      "tweetContent": "tweet 4",
+      "userId": 2,
+      "username": "marie123",
+      "comments": [],
+      "likes": [
         {
           "username": "fares123",
           "likeFrom": 1
@@ -27,89 +74,19 @@
       ],
       "retweet": [
         {
-          "username": "marie123",
-          "retweetFrom": 2
-        },
-        {
           "username": "fares123",
           "retweetFrom": 1
         }
       ],
-      "id": 1
-    },
-    {
-      "tweetId": "id-1683468580974-864468393",
-      "tweetContent": "tweet 2",
-      "userId": 2,
-      "username": "marie123",
-      "comments": [
-        {
-          "id": 1683468646055,
-          "commentContent": "robin123 COMMENTS",
-          "userId": 3,
-          "username": "robin123",
-          "likes": [],
-          "retweet": []
-        }
-      ],
-      "likes": [
-        {
-          "username": "robin123",
-          "likeFrom": 3
-        }
-      ],
-      "retweet": [],
-      "id": 2
-    },
-    {
-      "tweetId": "id-1683468621516-385680736",
-      "tweetContent": "tweet 3",
-      "userId": 3,
-      "username": "robin123",
-      "comments": [],
-      "likes": [
-        {
-          "username": "robin123",
-          "likeFrom": 3
-        },
-        {
-          "username": "fares123",
-          "likeFrom": 1
-        }
-      ],
-      "retweet": [],
-      "id": 3
-    },
-    {
-      "tweetId": "id-1683470686059-100030916",
-      "tweetContent": "tweet 4",
-      "userId": 3,
-      "username": "robin123",
-      "comments": [],
-      "likes": [
-        {
-          "username": "robin123",
-          "likeFrom": 3
-        },
-        {
-          "username": "fares123",
-          "likeFrom": 1
-        }
-      ],
-      "retweet": [],
       "id": 4
     },
     {
-      "tweetId": "id-1683470688666-109284897",
+      "tweetId": "id-1683504129148-871795140",
       "tweetContent": "tweet 5",
-      "userId": 3,
-      "username": "robin123",
+      "userId": 2,
+      "username": "marie123",
       "comments": [],
       "likes": [
-        {
-          "username": "robin123",
-          "likeFrom": 3
-        },
         {
           "username": "fares123",
           "likeFrom": 1
@@ -131,7 +108,49 @@
       "password": "fares123",
       "profileImage": "/default-avatar.png",
       "followers": [],
-      "followed": [],
+      "followed": [
+        {
+          "username": "marie123"
+        }
+      ],
+      "notifications": [
+        {
+          "notificationFrom": "marie123",
+          "type": "Someone liked your Tweet!",
+          "tweetId": "id-1683497412663-302157206",
+          "timestamp": "2023-05-07T23:24:20.398Z"
+        },
+        {
+          "notificationFrom": "marie123",
+          "type": "Someone retweeted your Tweet!",
+          "tweetId": "id-1683497412663-302157206",
+          "timestamp": "2023-05-07T23:24:20.857Z"
+        },
+        {
+          "notificationFrom": "marie123",
+          "type": "Someone liked your Tweet!",
+          "tweetId": "id-1683497410652-527683838",
+          "timestamp": "2023-05-07T23:24:21.620Z"
+        },
+        {
+          "notificationFrom": "marie123",
+          "type": "Someone retweeted your Tweet!",
+          "tweetId": "id-1683497410652-527683838",
+          "timestamp": "2023-05-07T23:24:22.710Z"
+        },
+        {
+          "notificationFrom": "marie123",
+          "type": "Someone liked your Tweet!",
+          "tweetId": "id-1683497407220-66521895",
+          "timestamp": "2023-05-07T23:24:26.404Z"
+        },
+        {
+          "notificationFrom": "marie123",
+          "type": "Someone retweeted your Tweet!",
+          "tweetId": "id-1683497407220-66521895",
+          "timestamp": "2023-05-07T23:24:26.888Z"
+        }
+      ],
       "id": 1
     },
     {
@@ -139,8 +158,39 @@
       "username": "marie123",
       "password": "marie123",
       "profileImage": "/default-avatar.png",
-      "followers": [],
+      "followers": [
+        {
+          "username": "fares123",
+          "profileImage": "/default-avatar.png"
+        }
+      ],
       "followed": [],
+      "notifications": [
+        {
+          "notificationFrom": "fares123",
+          "type": "Someone liked your Tweet!",
+          "tweetId": "id-1683504129148-871795140",
+          "timestamp": "2023-05-08T00:02:13.682Z"
+        },
+        {
+          "notificationFrom": "fares123",
+          "type": "Someone retweeted your Tweet!",
+          "tweetId": "id-1683504129148-871795140",
+          "timestamp": "2023-05-08T00:02:14.104Z"
+        },
+        {
+          "notificationFrom": "fares123",
+          "type": "Someone liked your Tweet!",
+          "tweetId": "id-1683504126880-255951335",
+          "timestamp": "2023-05-08T00:02:14.540Z"
+        },
+        {
+          "notificationFrom": "fares123",
+          "type": "Someone retweeted your Tweet!",
+          "tweetId": "id-1683504126880-255951335",
+          "timestamp": "2023-05-08T00:02:14.960Z"
+        }
+      ],
       "id": 2
     },
     {
@@ -148,9 +198,35 @@
       "username": "robin123",
       "password": "robin123",
       "profileImage": "/default-avatar.png",
+      "followers": [
+        {
+          "username": "fares123",
+          "profileImage": "/default-avatar.png"
+        }
+      ],
+      "followed": [],
+      "notifications": [],
+      "id": 3
+    },
+    {
+      "email": "marc@marc.fr",
+      "username": "marc123",
+      "password": "marc123",
+      "profileImage": "/default-avatar.png",
       "followers": [],
       "followed": [],
-      "id": 3
+      "notifications": [],
+      "id": 4
+    },
+    {
+      "email": "baptiste@baptiste.fr",
+      "username": "baptiste123",
+      "password": "baptiste123",
+      "profileImage": "/default-avatar.png",
+      "followers": [],
+      "followed": [],
+      "notifications": [],
+      "id": 5
     }
   ]
 }

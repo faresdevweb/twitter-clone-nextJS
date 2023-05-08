@@ -1,4 +1,5 @@
 import { TweetState } from "@/context/Tweet context/TweetContext";
+import { UserState } from "@/context/User context/UserContext";
 import { useState } from "react";
 
 /**
@@ -10,6 +11,8 @@ import { useState } from "react";
 export const useTweet = (currentUser) => {
 
   const { state: { tweets }, dispatchTweet } = TweetState();
+
+  const { state: { users }, dispatchUsers } = UserState();
 
   const [ tweetContent, setTweetContent ] = useState('');
 
@@ -54,6 +57,12 @@ export const useTweet = (currentUser) => {
       ];
     }
 
+    if (existingLike) {
+      await deleteNotification(currentUser.username, tweetToLike.username, "Someone liked your Tweet!", tweetToLike.tweetId);
+    } else {
+        await createNotification(currentUser.username, tweetToLike.username, "Someone liked your Tweet!", tweetToLike.tweetId);
+    }
+
     const response = await fetch(`http://localhost:5000/tweets/${id}`, {
       method: "PUT",
       headers: {
@@ -70,12 +79,13 @@ export const useTweet = (currentUser) => {
       }),
     });
     const updatedTweet = await response.json();
-    dispatchTweet({ type: "UPDATE_TWEET", payload: updatedTweet })
+    dispatchTweet({ type: "UPDATE_TWEET", payload: updatedTweet });
+    
   };
 
   const handleRetweet = async (id) => {
-    const tweetToRetweet = tweets.find((tweet) => tweet.id === id)
-    const existingRetweet = tweetToRetweet.retweet.find(r => r.retweetFrom === currentUser.id)
+    const tweetToRetweet = tweets.find((tweet) => tweet.id === id);
+    const existingRetweet = tweetToRetweet.retweet.find(r => r.retweetFrom === currentUser.id);
   
     let newRetweet;
     if(existingRetweet){
@@ -87,6 +97,12 @@ export const useTweet = (currentUser) => {
             username: currentUser.username,
             retweetFrom: currentUser.id
           }]
+    }
+
+    if (existingRetweet) {
+      await deleteNotification(currentUser.username, tweetToRetweet.username, "Someone retweeted your Tweet!", tweetToRetweet.tweetId);
+    } else {
+        await createNotification(currentUser.username, tweetToRetweet.username, "Someone retweeted your Tweet!", tweetToRetweet.tweetId);
     }
   
     const response = await fetch(`http://localhost:5000/tweets/${id}`, {
@@ -105,9 +121,59 @@ export const useTweet = (currentUser) => {
         }),
     });
     const updatedTweet = await response.json();
-    dispatchTweet({ type: "UPDATE_TWEET", payload: updatedTweet })
+    dispatchTweet({ type: "UPDATE_TWEET", payload: updatedTweet });
+
   };
 
-  return { tweetContent, setTweetContent, handlePostTweet, handleLike, handleRetweet }
+  const createNotification = async (usernameFrom, usernameTo, type, tweetId) => {
+    const response = await fetch(`http://localhost:5000/users?username=${usernameTo}`);
+    const [user] = await response.json();
+  
+    const newNotification = {
+      notificationFrom: usernameFrom,
+      type,
+      tweetId,
+      timestamp: new Date().toISOString(),
+    };
+  
+    user.notifications.push(newNotification);
+  
+    await fetch(`http://localhost:5000/users/${user.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+  };
+
+  const deleteNotification = async (usernameFrom, usernameTo, type, tweetId) => {
+    const response = await fetch(`http://localhost:5000/users?username=${usernameTo}`);
+    const [user] = await response.json();
+  
+    const notificationIndex = user.notifications.findIndex(
+      (notification) =>
+        notification.notificationFrom === usernameFrom &&
+        notification.type === type &&
+        notification.tweetId === tweetId
+    );
+  
+    if (notificationIndex !== -1) {
+      user.notifications.splice(notificationIndex, 1);
+  
+      await fetch(`http://localhost:5000/users/${user.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+    }
+  };
+
+  
+
+
+  return { tweetContent, setTweetContent, handlePostTweet, handleLike, handleRetweet, createNotification, deleteNotification }
 
 }

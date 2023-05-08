@@ -25,6 +25,7 @@ export const useConnection = (signInForm, register,router) => {
             profileImage: "/default-avatar.png",
             followers: [],
             followed: [],
+            notifications: [],
           };
       
           const response = await fetch("http://localhost:5000/users", {
@@ -65,7 +66,8 @@ export const useConnection = (signInForm, register,router) => {
               payload: {
                 id: signedInUser.id,
                 username: signedInUser.username,
-                email: signedInUser.email
+                email: signedInUser.email,
+                profileImage: signedInUser.profileImage
               },
             });
             router.push("/home");

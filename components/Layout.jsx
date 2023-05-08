@@ -10,10 +10,7 @@ const Layout = ( {children, isLoginPage } ) => {
     <div className='flex sm:justify-center xs:flex-col-reverse sm:flex-row h-screen max-w-[1400px] mx-auto'>
         { !isLoginPage && <Sidebar/> }
         {children}
-        { !isLoginPage && <SearchSidebar>
-              <Searchbar/>
-            <Recommend/>
-          </SearchSidebar> }
+        { !isLoginPage && <SearchSidebar/> }
     </div>
 
   )

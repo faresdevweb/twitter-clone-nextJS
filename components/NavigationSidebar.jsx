@@ -36,7 +36,7 @@ const Sidebar = () => {
                       </div>
                   </div>
                   </Link>
-                  <Link href='/notifications'>
+                  <Link href={`/notifications?username=${currentUser && currentUser.username}`}>
                   <div className="hover:bg-gray-400 hover:opacity-50 rounded-full p-3 cursor-pointer sm:mb-8 md:flex md:items-center md:gap-2">
                       <div className='lg:mr-3'>
                         <IoNotifications/>

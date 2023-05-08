@@ -6,7 +6,17 @@ import { useRouter } from 'next/router';
 
 const Tweet = (props) => {
 
-    const { id,tweetId, tweetContent , userId , comments , likes , retweet , username , currentUser, onClickLike, onClickRetweet } = props;
+    const { id,
+        tweetId,
+        tweetContent ,
+        userId ,
+        comments ,
+        likes ,
+        retweet , 
+        username ,
+        currentUser,
+        onClickLike,
+        onClickRetweet} = props;
   
     const { dispatchTweet } = TweetState();
 

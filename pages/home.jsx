@@ -27,6 +27,7 @@ const Home = ( { tweetsData } ) => {
 
   return (
     <div className='border-2 p-3 xs:h-[80%] xs:relative xs:overflow-auto xs:w-full sm:h-full xl:w-[40%] 2xl:w-[60%]'>
+        <div className='md:max-w-[700px] md:mx-auto sm:max-w-[450px] sm:mx-auto'>
         <TweetForm
             onClick={handlePostTweet}
             setTweetContent={setTweetContent}
@@ -34,7 +35,8 @@ const Home = ( { tweetsData } ) => {
             currentUser={currentUser} 
             dispatch={dispatchUsers} 
         />
-    <div>
+        </div>
+    <div className='md:max-w-[700px] md:mx-auto sm:max-w-[450px] sm:mx-auto'>
         {
             tweets && tweets.map((tweet) => (
                 <Tweet

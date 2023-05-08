@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Tweet from '@/components/Tweet';
 import { useTweet } from '@/hooks/useTweet';
 import { TweetState } from '@/context/Tweet context/TweetContext';
+import { useFollow } from '@/hooks/useFollow';
 
 const Profile = ( { tweetsUser, dataUser } ) => {
 
@@ -12,10 +13,11 @@ const Profile = ( { tweetsUser, dataUser } ) => {
   const [ userData, setUserData ] = useState(dataUser);
   const router = useRouter();
   const { userId } = router.query;
-  const { state: { users, currentUser }, dispatch } = UserState();
+  const { state: { users, currentUser }, dispatchUsers } = UserState();
+  console.log(currentUser);
   const { state: { tweets }, dispatchTweet } = TweetState();
   const { handleLike, handleRetweet } = useTweet(currentUser);
-
+  const { handleFollow } = useFollow(userData,currentUser,setUserData,users,dispatchUsers);
 
   useEffect(() => {
       fetch(`http://localhost:5000/tweets?username=${userId}`)
@@ -61,7 +63,19 @@ const Profile = ( { tweetsUser, dataUser } ) => {
             </button>
         </div>
         <div className='borderp-3 mt-[10px]'>
+            <div className="flex items-center gap-8 mb-3">
             <h2 className='text-xl font-bold'> { dataUser && dataUser[0].username } </h2>
+            {
+               dataUser && currentUser && dataUser[0].username === currentUser.username ? (
+                 <></>
+               ) : <button
+                      className="rounded-lg py-2 px-2 bg-black text-white hover:bg-white hover:text-black transition-[0.2s] duration-200"
+                      onClick={handleFollow}
+                   >
+                    Follow
+                    </button>
+            }             
+            </div>
             <div className="flex gap-2">
                 <p className='w-fit hover:underline cursor-pointer'> {dataUser && dataUser[0].followers.length} followers </p>
                 <p className='w-fit hover:underline cursor-pointer'> {dataUser && dataUser[0].followed.length} followed </p>
