@@ -1,4 +1,5 @@
 import React,{ useState, useEffect } from 'react'
+import { MoonLoader } from 'react-spinners';
 import { useComment } from '@/hooks/useComment';
 import Tweet from '@/components/Tweet';
 import TweetForm from '@/components/TweetForm';
@@ -11,19 +12,27 @@ const Comment = ({ tweet }) => {
   const router = useRouter();
   const { tweetId } = router.query;
   const [comments, setComments] = useState(tweet.comments);
+  const [ isLoading, setIsLoading ] = useState(true);
   const { state: { currentUser } } = UserState();
   const { state: { tweets }, dispatchTweet } = TweetState();
 
   const { tweetContent, setTweetContent, handlePostComments,handleLikeComment, handleRetweetComment } = useComment(currentUser,comments,setComments,tweet);
 
   useEffect(() => {
-    if(!currentUser){
-      router.push('/');
+    if (!currentUser) {
+      router.push("/?mustBeConnectModal=true");
+    } else {
+      setIsLoading(false);
     }
-  })
+  }, [currentUser]);
 
   return (
-    <div className='border-2 p-3 xs:h-[80%] xs:relative xs:overflow-auto xs:w-full sm:h-full xl:w-[40%] 2xl:w-[60%]'> 
+    isLoading ? (
+      <div className="mt-10">
+          <MoonLoader color="#36d7b7" />
+      </div>
+    ) : (
+      <div className='border-2 p-3 xs:h-[80%] xs:relative xs:overflow-auto xs:w-full sm:h-full xl:w-[40%] 2xl:w-[60%]'> 
        <Tweet
           userId={tweet.userId} 
           currentUser={currentUser}
@@ -64,6 +73,7 @@ const Comment = ({ tweet }) => {
           }
         </div>
     </div>
+    )
   )
 }
 

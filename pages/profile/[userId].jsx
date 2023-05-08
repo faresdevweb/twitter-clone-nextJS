@@ -1,4 +1,5 @@
 import React,{ useEffect, useState } from 'react';
+import { MoonLoader } from 'react-spinners';
 import { useRouter } from 'next/router';
 import { UserState } from '@/context/User context/UserContext';
 import Image from 'next/image';
@@ -11,6 +12,7 @@ const Profile = ( { tweetsUser, dataUser } ) => {
 
   const [ userTweet, setUserTweet ] = useState(tweetsUser);
   const [ userData, setUserData ] = useState(dataUser);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const { userId } = router.query;
   const { state: { users, currentUser }, dispatchUsers } = UserState();
@@ -32,21 +34,28 @@ const Profile = ( { tweetsUser, dataUser } ) => {
   }, [userId]);
 
   useEffect(() => {
-    if(!currentUser){
-      router.push('/');
-    }
-  })
-
-  useEffect(() => {
     if (userTweet) {
       dispatchTweet({ type: "SET_TWEETS", payload: userTweet });
     }
   }, [userTweet]);
 
+  useEffect(() => {
+    if (!currentUser) {
+      router.push("/?mustBeConnectModal=true");
+    } else {
+      setIsLoading(false);
+    }
+  }, [currentUser]);
+
 
 
   return (
-    <div className="p-3 xs:h-[80%] xs:relative xs:overflow-auto xs:w-full sm:h-full xl:w-[40%] 2xl:w-[60%]">
+      isLoading ? (
+        <div className="mt-10">
+            <MoonLoader color="#36d7b7" />
+        </div>
+      ) : (
+        <div className="p-3 xs:h-[80%] xs:relative xs:overflow-auto xs:w-full sm:h-full xl:w-[40%] 2xl:w-[60%]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="">
               <Image
@@ -56,15 +65,10 @@ const Profile = ( { tweetsUser, dataUser } ) => {
                 className="rounded-full p-1 border mb-[20px]"
               />
             </div>
-            <button 
-                className='h-fit px-2 py-2 rounded-full border border-gray-500 mr-[15px]'
-            >
-                Edit profile
-            </button>
         </div>
         <div className='borderp-3 mt-[10px]'>
             <div className="flex items-center gap-8 mb-3">
-            <h2 className='text-xl font-bold'> { dataUser && dataUser[0].username } </h2>
+            <h2 className='text-xl font-bold'> { dataUser[0] && dataUser[0].username } </h2>
             {
                dataUser && currentUser && dataUser[0].username === currentUser.username ? (
                  <></>
@@ -77,8 +81,8 @@ const Profile = ( { tweetsUser, dataUser } ) => {
             }             
             </div>
             <div className="flex gap-2">
-                <p className='w-fit hover:underline cursor-pointer'> {dataUser && dataUser[0].followers.length} followers </p>
-                <p className='w-fit hover:underline cursor-pointer'> {dataUser && dataUser[0].followed.length} followed </p>
+                <p className='w-fit hover:underline cursor-pointer'> {dataUser[0] && dataUser[0].followers.length} followers </p>
+                <p className='w-fit hover:underline cursor-pointer'> {dataUser[0] && dataUser[0].followed.length} followed </p>
             </div>
         </div>
         <div className='p-5 mt-4'>
@@ -102,6 +106,7 @@ const Profile = ( { tweetsUser, dataUser } ) => {
             }
         </div>
     </div> 
+      )
   )
 }
 

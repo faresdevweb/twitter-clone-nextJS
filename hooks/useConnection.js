@@ -5,10 +5,10 @@ import { UserState } from "@/context/User context/UserContext";
  * @param {state} signInForm 
  * @param {state} register 
  * @param {NextRouter} router 
- * @returns {handleLogin && handleRegister} function to login and register
+ * @returns {handleLogin & handleRegister} function to login and register
  */
 
-export const useConnection = (signInForm, register,router) => {
+export const useConnection = (signInForm, register,router,errorModal,setErrorModal) => {
     const { state: {users,currentUser}, dispatchUsers } = UserState();
 
     const handleRegister = async (event) => {
@@ -72,7 +72,7 @@ export const useConnection = (signInForm, register,router) => {
             });
             router.push("/home");
           } else {
-            console.log("User not found");
+            setErrorModal(!errorModal)
           }
         }
       };

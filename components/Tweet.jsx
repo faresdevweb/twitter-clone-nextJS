@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { TweetState } from '@/context/Tweet context/TweetContext';
+import { AiOutlineLike,AiOutlineRetweet } from "react-icons/ai"
 import { UserState } from '@/context/User context/UserContext';
 import Image from 'next/image'
 import { useRouter } from 'next/router';
@@ -30,6 +31,7 @@ const Tweet = (props) => {
         router.push(`/profile/${username}`)
     }
 
+
     return (
         <div className='border border-black rounded-lg w-[80%] mx-auto mb-5 sm:w-[100%]'>
             <div className="container-name  flex justify-start p-3">
@@ -51,8 +53,14 @@ const Tweet = (props) => {
                 <p className='w-[90%]'> {tweetContent} </p>
             </div>
             <div className='flex justify-around items-center'>
-                <button onClick={onClickLike}> {likes.length} Like</button>
-                <button onClick={onClickRetweet}> {retweet.length} Retweet</button>
+                <button 
+                    onClick={onClickLike} 
+                    className='flex items-center gap-2'
+                > {likes.length} <AiOutlineLike 
+                />
+                
+                </button>
+                <button onClick={onClickRetweet} className='flex items-center gap-2'> {retweet.length} <AiOutlineRetweet/></button>
                 {
                   router.pathname === "/comments/[commentId]" ? <></> : <button onClick={() => handleCommentClick(id)}> {comments.length} Commentaire</button>
                 }

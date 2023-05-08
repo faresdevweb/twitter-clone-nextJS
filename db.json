@@ -66,12 +66,7 @@
       "userId": 2,
       "username": "marie123",
       "comments": [],
-      "likes": [
-        {
-          "username": "fares123",
-          "likeFrom": 1
-        }
-      ],
+      "likes": [],
       "retweet": [
         {
           "username": "fares123",
@@ -86,12 +81,7 @@
       "userId": 2,
       "username": "marie123",
       "comments": [],
-      "likes": [
-        {
-          "username": "fares123",
-          "likeFrom": 1
-        }
-      ],
+      "likes": [],
       "retweet": [
         {
           "username": "fares123",
@@ -168,27 +158,15 @@
       "notifications": [
         {
           "notificationFrom": "fares123",
-          "type": "Someone liked your Tweet!",
-          "tweetId": "id-1683504129148-871795140",
-          "timestamp": "2023-05-08T00:02:13.682Z"
-        },
-        {
-          "notificationFrom": "fares123",
-          "type": "Someone retweeted your Tweet!",
-          "tweetId": "id-1683504129148-871795140",
-          "timestamp": "2023-05-08T00:02:14.104Z"
-        },
-        {
-          "notificationFrom": "fares123",
-          "type": "Someone liked your Tweet!",
-          "tweetId": "id-1683504126880-255951335",
-          "timestamp": "2023-05-08T00:02:14.540Z"
-        },
-        {
-          "notificationFrom": "fares123",
           "type": "Someone retweeted your Tweet!",
           "tweetId": "id-1683504126880-255951335",
           "timestamp": "2023-05-08T00:02:14.960Z"
+        },
+        {
+          "notificationFrom": "fares123",
+          "type": "Someone retweeted your Tweet!",
+          "tweetId": "id-1683504129148-871795140",
+          "timestamp": "2023-05-08T12:34:43.471Z"
         }
       ],
       "id": 2
